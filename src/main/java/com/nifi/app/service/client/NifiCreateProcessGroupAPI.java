@@ -1,5 +1,7 @@
 package com.nifi.app.service.client;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -22,12 +24,12 @@ public class NifiCreateProcessGroupAPI implements NifiConnectionAPI<String> {
 	private RestTemplate ignoreHttpsRestTemplate;
 
 	@Override
-	public NifiResponseDto<String> connect(String... strings) {
+	public NifiResponseDto<String> connect(Map<String, Object> parameters){
 
-		String jwt = strings[0];
-		String rootPgId = strings[1];
-		String processGroupName = strings[2];
-		String clientId=strings[3];
+		String jwt = (String) parameters.get("jwt");
+		String rootPgId = (String) parameters.get("rootProjectGroupId");
+		String processGroupName = (String) parameters.get("processGroupName");
+		String clientId=(String) parameters.get("clientId");
 		this.url = this.url.replace("ROOT_PG_ID", rootPgId);
 		
 		HttpHeaders headers = new HttpHeaders();

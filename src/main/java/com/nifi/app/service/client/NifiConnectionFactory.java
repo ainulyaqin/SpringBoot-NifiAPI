@@ -16,6 +16,9 @@ public class NifiConnectionFactory {
 	@Autowired
 	private NifiConnectionAPI nifiCreateProcessGroupAPI;
 	
+	@Autowired
+	private NifiConnectionAPI nifiCreateProcessorInvokeHttpAPI;
+	
 	public NifiConnectionAPI getAPI(EnumNifiAPIType APIType){
 		if(APIType.equals(EnumNifiAPIType.API_LOGIN)) {
 			return nifiLoginAPI;
@@ -23,6 +26,8 @@ public class NifiConnectionFactory {
 			return nifiGetResourcesAPI;
 		}else if(APIType.equals(EnumNifiAPIType.API_CREATE_PROCESS_GROUP)) {
 			return nifiCreateProcessGroupAPI;
+		}else if(APIType.equals(EnumNifiAPIType.API_CREATE_PROCESSOR_INVOKE_HTTP)) {
+			return nifiCreateProcessorInvokeHttpAPI;
 		}
 		return null;
 	}

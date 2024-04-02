@@ -1,5 +1,7 @@
 package com.nifi.app.service.client;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -30,7 +32,7 @@ public class NifiLoginAPI implements NifiConnectionAPI<String> {
 	private RestTemplate ignoreHttpsRestTemplate;
 
 	@Override
-	public NifiResponseDto<String> connect(String... strings) {
+	public NifiResponseDto<String> connect(Map<String, Object> parameters){
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);

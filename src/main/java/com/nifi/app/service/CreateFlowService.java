@@ -21,6 +21,8 @@ public class CreateFlowService {
 		
 		userDataToCSVBuilder.createPg(processGroupName);
 		
+		userDataToCSVBuilder.createProcessor();
+		
 		return new ResponseTemplate("Flow successfully created");
 	}
 
